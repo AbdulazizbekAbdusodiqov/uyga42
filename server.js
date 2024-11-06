@@ -1,15 +1,15 @@
 import express from "express";
 import { config } from "dotenv";
+import {} from "./routes/index.js"
 
 config()
-
-const PORT = process.env.PORT
-
+const port = process.env.PORT
 const app = express()
 app.use(express.json())
 
+// app.use("/Author",)
+app.use('/category')
 
-
-app.listen(PORT, ()=>{
-    console.log("PORT:" + PORT)
+app.listen(port , () => {
+    console.log(`serverimiz ${port}da ishlayabdi`)
 })
