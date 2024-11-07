@@ -3,4 +3,4 @@
 node_modules/
 
 
-# .env PORT va MONGODB_URI bor  
+# .env PORT va DB_URI bor  

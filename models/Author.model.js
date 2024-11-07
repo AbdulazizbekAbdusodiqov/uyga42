@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import {config}  from "dotenv"
+config()
+mongoose.connect(process.env.DB_URI);
 
 const authorSchema = new mongoose.Schema({
   name: {
@@ -12,4 +15,4 @@ const authorSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Author", authorSchema);
+export const Users =  mongoose.model("Author", authorSchema);
