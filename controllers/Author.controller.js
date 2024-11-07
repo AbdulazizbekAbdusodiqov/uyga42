@@ -1,7 +1,11 @@
-export const createUserCon = (req, res, next) =>{
-    try {
-        
-        
+import {Users} from '../models/index.js'
+
+
+export const createCon = async(req, res, next) =>{
+    try {  
+        const create = new Users(...req.body)
+        await create.save()
+        return res.status(201).send(" Created")
 
     } catch (error) {
         next(error)

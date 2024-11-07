@@ -1,8 +1,8 @@
-import {Users} from "../models/index.js"
+import {Users as Category} from "../models/index.js"
 
 export const createCategoryCon = async (req, res, next) => {
     try {
-        const newCategory = await new Users(...req.body)
+        const newCategory = await new Category(...req.body)
         await newCategory.save()
 
         return res.status(201).send("category created")
@@ -14,7 +14,7 @@ export const createCategoryCon = async (req, res, next) => {
 
 export const getAllCategoryCon = async(req, res, next) => {
     try {
-        const allUser = await Users.find().limit(30)
+        const allUser = await Category.find().limit(30)
 
         return res.status(200).send(allUser)
 
@@ -25,7 +25,7 @@ export const getAllCategoryCon = async(req, res, next) => {
 export const getOneCategoryCon = async(req, res, next) => {
     try {
         const id = req.params.id
-        const user = await Users.findById(id)
+        const user = await Category.findById(id)
 
         return res.status(200).send(user)
 
@@ -36,7 +36,7 @@ export const getOneCategoryCon = async(req, res, next) => {
 export const updateCategoryCon = async(req, res, next) => {
     try {
         
-        const updatedUser = await Users.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
+        const updatedUser = await Category.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
 
         if(!updatedUser){
             return res.status(400).send("category not found")
@@ -51,7 +51,7 @@ export const updateCategoryCon = async(req, res, next) => {
 export const deleteCategoryCon = async (req, res, next) => {
     try {
 
-        const deletedUser = await Users.findByIdAndDelete(id);
+        const deletedUser = await Category.findByIdAndDelete(id);
 
         if(!deletedUser){
             return res.status(400).send("category not found")
