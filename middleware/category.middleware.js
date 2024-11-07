@@ -1,12 +1,14 @@
+import Joi from "joi";
+
 export const crerateCategoryVal = (req, res, next) =>{
     try {
-        const {title, description} = req.body
-        if(!title || !description){
-            return res.status(400).send("title or description not found")
-        }
-        req.body = {title, description}
+        const categorySchema = Joi.object({
+            title : Joi.string().required().trim(),
+            description : Joi.string().trim()
+        });
+        
         next()
-
+        
     } catch (error) {
         next(error)
     }

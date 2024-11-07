@@ -3,16 +3,22 @@ import {config}  from "dotenv"
 config()
 mongoose.connect(process.env.DB_URI);
 
-const authorSchema = new mongoose.Schema({
-  name: {
+const userSchema = new mongoose.Schema({
+  email: {
     type: String,
     required: true,
     trim: true,
   },
-  bio: {
+  password: {
     type: String,
     trim: true,
   },
+  name : String,
+  role : {
+    type: String,
+    enum: ["user", "admin", "superAdmin"],
+    default : 'user'
+  }
 });
 
-export const Users =  mongoose.model("Author", authorSchema);
+export const Users =  mongoose.model("Users", userSchema);
